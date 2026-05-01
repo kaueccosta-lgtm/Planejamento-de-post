@@ -368,13 +368,13 @@ enum PostStatus {
 }
 
 enum DemandStatus {
-  BRIEFING
-  DESIGN
-  COPY
-  REVIEW
-  APPROVAL
-  SCHEDULED
-  PUBLISHED
+  DRAFT           // Rascunho
+  CONTENT         // Em produção (design/redação)
+  INTERNAL_REVIEW // Aprovação interna (gestor)
+  EXTERNAL_REVIEW // Aprovação sócios
+  REVISION        // Ajustes solicitados
+  PENDING_SCHEDULE // Aguardando agendamento
+  DONE            // Concluídas (agendado/publicado)
   CANCELLED
 }
 
