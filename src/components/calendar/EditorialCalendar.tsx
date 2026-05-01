@@ -49,7 +49,7 @@ const samplePosts: Record<string, CalendarPost[]> = {
     { id: "5", title: "Torre Ametista — Lançamento", platform: "FACEBOOK", status: "SCHEDULED", obraColor: "#8b5cf6", time: "16:00" },
   ],
   "2026-05-01": [
-    { id: "6", title: "Dia do Trabalho — Mensagem", platform: "INSTAGRAM", status: "SCHEDULED", obraColor: "#d4a574", time: "08:00" },
+    { id: "6", title: "Dia do Trabalho — Mensagem", platform: "INSTAGRAM", status: "SCHEDULED", obraColor: "#C46B3F", time: "08:00" },
   ],
   "2026-05-05": [
     { id: "7", title: "Parque Sul — Área de lazer", platform: "INSTAGRAM", status: "DRAFT", obraColor: "#f59e0b", time: "11:00" },
@@ -99,7 +99,7 @@ export function EditorialCalendar() {
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
-          <h2 className="text-lg font-serif font-semibold text-white capitalize min-w-[180px] text-center">
+          <h2 className="text-lg font-serif font-semibold text-[#1A1209] capitalize min-w-[180px] text-center">
             {format(currentDate, "MMMM yyyy", { locale: ptBR })}
           </h2>
           <Button
@@ -119,7 +119,7 @@ export function EditorialCalendar() {
         </div>
 
         {/* View toggle */}
-        <div className="flex rounded-lg border border-[#1f1f1f] overflow-hidden">
+        <div className="flex rounded-lg border border-[#D5C9BC] overflow-hidden bg-[#F0EDE8]">
           {(["month", "week", "list"] as ViewMode[]).map((v) => (
             <button
               key={v}
@@ -127,8 +127,8 @@ export function EditorialCalendar() {
               className={cn(
                 "px-4 py-1.5 text-sm capitalize transition-colors",
                 view === v
-                  ? "bg-[#d4a574] text-[#0a0a0a] font-medium"
-                  : "text-zinc-400 hover:text-white hover:bg-[#111111]"
+                  ? "bg-[#C46B3F] text-white font-medium"
+                  : "text-[#7A6559] hover:text-[#1A1209] hover:bg-[#E8E4DF]"
               )}
             >
               {v === "month" ? "Mês" : v === "week" ? "Semana" : "Lista"}
@@ -138,13 +138,13 @@ export function EditorialCalendar() {
       </div>
 
       {view === "month" && (
-        <div className="rounded-xl border border-[#1f1f1f] bg-[#111111] overflow-hidden">
+        <div className="rounded-xl border border-[#D5C9BC] bg-[#F0EDE8] overflow-hidden shadow-sm">
           {/* Week day headers */}
-          <div className="grid grid-cols-7 border-b border-[#1f1f1f]">
+          <div className="grid grid-cols-7 border-b border-[#D5C9BC]">
             {weekDays.map((day) => (
               <div
                 key={day}
-                className="py-2 text-center text-xs font-medium text-zinc-500"
+                className="py-2 text-center text-xs font-medium text-[#7A6559]"
               >
                 {day}
               </div>
@@ -164,10 +164,10 @@ export function EditorialCalendar() {
                   key={idx}
                   onClick={() => setSelectedDay(day)}
                   className={cn(
-                    "min-h-[100px] p-2 border-b border-r border-[#1f1f1f] cursor-pointer transition-colors",
-                    !isCurrentMonth && "bg-[#0a0a0a] opacity-50",
-                    isSelected && "bg-[#d4a574]/10",
-                    isCurrentMonth && !isSelected && "hover:bg-[#161616]"
+                    "min-h-[100px] p-2 border-b border-r border-[#D5C9BC] cursor-pointer transition-colors",
+                    !isCurrentMonth && "bg-[#E8E4DF] opacity-60",
+                    isSelected && "bg-[#C46B3F]/10",
+                    isCurrentMonth && !isSelected && "hover:bg-[#E8E4DF]"
                   )}
                 >
                   <div className="flex items-center justify-between mb-1">
@@ -175,16 +175,16 @@ export function EditorialCalendar() {
                       className={cn(
                         "flex h-6 w-6 items-center justify-center rounded-full text-xs font-medium",
                         dayIsToday
-                          ? "bg-[#d4a574] text-[#0a0a0a] font-bold"
+                          ? "bg-[#C46B3F] text-white font-bold"
                           : isCurrentMonth
-                          ? "text-white"
-                          : "text-zinc-600"
+                          ? "text-[#1A1209]"
+                          : "text-[#A89585]"
                       )}
                     >
                       {format(day, "d")}
                     </span>
                     {posts.length > 0 && (
-                      <span className="text-xs text-zinc-500">{posts.length}</span>
+                      <span className="text-xs text-[#7A6559]">{posts.length}</span>
                     )}
                   </div>
 
@@ -201,13 +201,13 @@ export function EditorialCalendar() {
                         <span style={{ color: post.obraColor }}>
                           {platformIcons[post.platform]}
                         </span>
-                        <span className="truncate text-white/80 leading-tight">
+                        <span className="truncate text-[#1A1209]/80 leading-tight">
                           {post.time}
                         </span>
                       </div>
                     ))}
                     {posts.length > 3 && (
-                      <p className="text-xs text-zinc-500 pl-1">+{posts.length - 3} mais</p>
+                      <p className="text-xs text-[#7A6559] pl-1">+{posts.length - 3} mais</p>
                     )}
                   </div>
                 </div>
@@ -222,27 +222,27 @@ export function EditorialCalendar() {
           {Object.entries(samplePosts)
             .sort(([a], [b]) => a.localeCompare(b))
             .map(([dateKey, posts]) => (
-              <div key={dateKey} className="rounded-xl border border-[#1f1f1f] bg-[#111111] p-4">
-                <p className="text-sm font-semibold text-zinc-400 mb-3 capitalize">
+              <div key={dateKey} className="rounded-xl border border-[#D5C9BC] bg-[#F0EDE8] p-4 shadow-sm">
+                <p className="text-sm font-semibold text-[#7A6559] mb-3 capitalize">
                   {format(new Date(dateKey + "T12:00:00"), "EEEE, d 'de' MMMM", { locale: ptBR })}
                 </p>
                 <div className="space-y-2">
                   {posts.map((post) => (
-                    <div key={post.id} className="flex items-center gap-3 rounded-lg bg-[#0a0a0a] p-3">
+                    <div key={post.id} className="flex items-center gap-3 rounded-lg bg-[#E8E4DF] p-3">
                       <div
                         className="h-2 w-2 rounded-full flex-shrink-0"
                         style={{ backgroundColor: post.obraColor }}
                       />
-                      <span className="text-sm text-zinc-400 w-12 flex-shrink-0">{post.time}</span>
-                      <span className="text-white/80 text-zinc-400 flex-shrink-0">
+                      <span className="text-sm text-[#7A6559] w-12 flex-shrink-0">{post.time}</span>
+                      <span className="text-[#7A6559] flex-shrink-0">
                         {platformIcons[post.platform]}
                       </span>
-                      <p className="text-sm text-white flex-1 truncate">{post.title}</p>
+                      <p className="text-sm text-[#1A1209] flex-1 truncate">{post.title}</p>
                       <span className={cn(
                         "text-xs px-2 py-0.5 rounded-full",
-                        post.status === "PUBLISHED" ? "bg-emerald-900/50 text-emerald-400" :
-                        post.status === "SCHEDULED" ? "bg-blue-900/50 text-blue-400" :
-                        "bg-zinc-800 text-zinc-400"
+                        post.status === "PUBLISHED" ? "bg-emerald-100 text-emerald-700" :
+                        post.status === "SCHEDULED" ? "bg-blue-100 text-blue-700" :
+                        "bg-[#D5C9BC] text-[#7A6559]"
                       )}>
                         {post.status === "PUBLISHED" ? "Publicado" : post.status === "SCHEDULED" ? "Agendado" : "Rascunho"}
                       </span>
@@ -255,8 +255,8 @@ export function EditorialCalendar() {
       )}
 
       {view === "week" && (
-        <div className="rounded-xl border border-[#1f1f1f] bg-[#111111] p-4">
-          <p className="text-zinc-500 text-sm text-center py-8">
+        <div className="rounded-xl border border-[#D5C9BC] bg-[#F0EDE8] p-4 shadow-sm">
+          <p className="text-[#7A6559] text-sm text-center py-8">
             Visualização semanal em desenvolvimento
           </p>
         </div>

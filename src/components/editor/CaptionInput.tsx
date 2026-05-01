@@ -78,7 +78,7 @@ export function CaptionInput({
         <button
           type="button"
           onClick={() => insertAtCursor(" 😊")}
-          className="flex h-8 w-8 items-center justify-center rounded-md text-zinc-500 hover:bg-[#1f1f1f] hover:text-white transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-md text-[#7A6559] hover:bg-[#E8E4DF] hover:text-[#1A1209] transition-colors"
           title="Emoji"
         >
           <Smile className="h-4 w-4" />
@@ -86,7 +86,7 @@ export function CaptionInput({
         <button
           type="button"
           onClick={addHashtag}
-          className="flex h-8 w-8 items-center justify-center rounded-md text-zinc-500 hover:bg-[#1f1f1f] hover:text-white transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-md text-[#7A6559] hover:bg-[#E8E4DF] hover:text-[#1A1209] transition-colors"
           title="Hashtag"
         >
           <Hash className="h-4 w-4" />
@@ -94,7 +94,7 @@ export function CaptionInput({
         <button
           type="button"
           onClick={addMention}
-          className="flex h-8 w-8 items-center justify-center rounded-md text-zinc-500 hover:bg-[#1f1f1f] hover:text-white transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-md text-[#7A6559] hover:bg-[#E8E4DF] hover:text-[#1A1209] transition-colors"
           title="Mencionar"
         >
           <AtSign className="h-4 w-4" />
@@ -102,13 +102,13 @@ export function CaptionInput({
         <button
           type="button"
           onClick={addSignature}
-          className="flex h-8 w-8 items-center justify-center rounded-md text-zinc-500 hover:bg-[#1f1f1f] hover:text-white transition-colors"
+          className="flex h-8 w-8 items-center justify-center rounded-md text-[#7A6559] hover:bg-[#E8E4DF] hover:text-[#1A1209] transition-colors"
           title="Assinatura"
         >
           <Pen className="h-4 w-4" />
         </button>
 
-        <div className="h-4 w-px bg-[#1f1f1f] mx-1" />
+        <div className="h-4 w-px bg-[#D5C9BC] mx-1" />
 
         {onAIGenerate && (
           <Button
@@ -116,7 +116,7 @@ export function CaptionInput({
             variant="ghost"
             size="sm"
             onClick={onAIGenerate}
-            className="h-8 gap-1.5 text-[#d4a574] hover:text-[#e8c9a0] hover:bg-[#d4a574]/10 px-2"
+            className="h-8 gap-1.5 text-[#C46B3F] hover:text-[#A85A30] hover:bg-[#C46B3F]/10 px-2"
           >
             <Sparkles className="h-3.5 w-3.5" />
             <span className="text-xs">IA</span>
@@ -128,10 +128,10 @@ export function CaptionInput({
             className={cn(
               "text-xs tabular-nums",
               isOverLimit
-                ? "text-red-400"
+                ? "text-red-500"
                 : isNearLimit
-                ? "text-yellow-400"
-                : "text-zinc-600"
+                ? "text-yellow-600"
+                : "text-[#A89585]"
             )}
           >
             {charCount}/{maxLen}
