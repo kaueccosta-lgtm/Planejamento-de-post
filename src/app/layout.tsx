@@ -32,9 +32,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className="dark" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${fraunces.variable} font-sans antialiased bg-[#0a0a0a] text-white min-h-screen`}
+        className={`${inter.variable} ${fraunces.variable} font-sans antialiased bg-[#E8E4DF] text-[#1A1209] min-h-screen`}
       >
         {children}
       </body>
