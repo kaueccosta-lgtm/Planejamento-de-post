@@ -189,7 +189,7 @@ function CollapsibleSection({ section, pathname }: CollapsibleSectionProps) {
     <div>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex w-full items-center justify-between px-3 py-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 hover:text-zinc-400 transition-colors"
+        className="flex w-full items-center justify-between px-3 py-2 text-[10px] font-semibold uppercase tracking-widest text-[#5A4035] hover:text-[#A89585] transition-colors"
       >
         <span>{section.title}</span>
         <ChevronDown
@@ -225,18 +225,18 @@ function NavLink({
       className={cn(
         "flex items-center justify-between gap-3 rounded-md px-3 py-2 text-sm transition-colors",
         isActive
-          ? "bg-[#d4a574]/10 text-[#d4a574]"
-          : "text-zinc-400 hover:bg-[#111111] hover:text-white"
+          ? "bg-[#C46B3F] text-white"
+          : "text-[#A89585] hover:bg-[#2E1A0E] hover:text-[#E8E4DF]"
       )}
     >
       <div className="flex items-center gap-3">
-        <span className={isActive ? "text-[#d4a574]" : "text-zinc-500"}>
+        <span className={isActive ? "text-white" : "text-[#A89585]"}>
           {item.icon}
         </span>
         {item.label}
       </div>
       {item.badge !== undefined && item.badge > 0 && (
-        <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#d4a574] text-[10px] font-bold text-[#0a0a0a] px-1">
+        <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#C46B3F] text-[10px] font-bold text-white px-1">
           {item.badge > 99 ? "99+" : item.badge}
         </span>
       )}
@@ -248,17 +248,17 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-60 bg-[#0a0a0a] border-r border-[#1f1f1f] flex flex-col z-40">
+    <aside className="fixed left-0 top-0 h-screen w-60 bg-[#1C0F07] border-r border-[#3D2415] flex flex-col z-40">
       {/* Logo */}
-      <div className="flex items-center gap-3 px-4 py-5 border-b border-[#1f1f1f]">
-        <div className="w-8 h-8 rounded-lg bg-[#d4a574] flex items-center justify-center">
-          <span className="text-[#0a0a0a] font-bold text-sm font-serif">O</span>
+      <div className="flex items-center gap-3 px-4 py-5 border-b border-[#3D2415] bg-[#2E1A0E]">
+        <div className="w-8 h-8 rounded-lg bg-[#C46B3F] flex items-center justify-center">
+          <span className="text-white font-bold text-sm font-serif">O</span>
         </div>
         <div>
-          <h1 className="text-white font-serif font-semibold text-sm leading-none">
+          <h1 className="text-[#E8E4DF] font-serif font-semibold text-sm leading-none">
             Oikos Social
           </h1>
-          <p className="text-zinc-500 text-xs mt-0.5">Gestão de Redes</p>
+          <p className="text-[#A89585] text-xs mt-0.5">Gestão de Redes</p>
         </div>
       </div>
 
@@ -270,8 +270,8 @@ export function Sidebar() {
       </nav>
 
       {/* Footer */}
-      <div className="border-t border-[#1f1f1f] p-3">
-        <p className="text-xs text-zinc-600 text-center">
+      <div className="border-t border-[#2E1A0E] p-3">
+        <p className="text-xs text-[#A89585] text-center">
           Oikos Social v0.1.0
         </p>
       </div>

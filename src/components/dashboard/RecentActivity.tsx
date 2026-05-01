@@ -11,12 +11,12 @@ interface ActivityItem {
 }
 
 const activityIcons = {
-  published: { icon: CheckCircle2, color: "text-emerald-400 bg-emerald-400/10" },
-  scheduled: { icon: Clock, color: "text-blue-400 bg-blue-400/10" },
-  comment: { icon: MessageCircle, color: "text-purple-400 bg-purple-400/10" },
-  draft: { icon: FileEdit, color: "text-zinc-400 bg-zinc-400/10" },
-  alert: { icon: AlertCircle, color: "text-red-400 bg-red-400/10" },
-  upload: { icon: Upload, color: "text-[#d4a574] bg-[#d4a574]/10" },
+  published: { icon: CheckCircle2, color: "text-emerald-600 bg-emerald-100" },
+  scheduled: { icon: Clock, color: "text-blue-600 bg-blue-100" },
+  comment: { icon: MessageCircle, color: "text-purple-600 bg-purple-100" },
+  draft: { icon: FileEdit, color: "text-[#7A6559] bg-[#D5C9BC]" },
+  alert: { icon: AlertCircle, color: "text-red-500 bg-red-100" },
+  upload: { icon: Upload, color: "text-[#C46B3F] bg-[#C46B3F]/10" },
 };
 
 const sampleActivities: ActivityItem[] = [
@@ -72,10 +72,10 @@ const sampleActivities: ActivityItem[] = [
 
 export function RecentActivity() {
   return (
-    <div className="rounded-xl border border-[#1f1f1f] bg-[#111111] p-5">
+    <div className="rounded-xl border border-[#D5C9BC] bg-[#F0EDE8] p-5 shadow-sm">
       <div className="mb-4">
-        <h3 className="font-serif font-semibold text-white">Atividade Recente</h3>
-        <p className="text-xs text-zinc-500 mt-0.5">Últimas ações da equipe</p>
+        <h3 className="font-serif font-semibold text-[#1A1209]">Atividade Recente</h3>
+        <p className="text-xs text-[#7A6559] mt-0.5">Últimas ações da equipe</p>
       </div>
 
       <div className="space-y-1">
@@ -85,10 +85,10 @@ export function RecentActivity() {
             <div key={item.id} className="relative">
               {/* Timeline line */}
               {index < sampleActivities.length - 1 && (
-                <div className="absolute left-[18px] top-10 h-full w-px bg-[#1f1f1f]" />
+                <div className="absolute left-[18px] top-10 h-full w-px bg-[#D5C9BC]" />
               )}
 
-              <div className="flex gap-3 rounded-lg p-2 hover:bg-[#161616] transition-colors cursor-pointer">
+              <div className="flex gap-3 rounded-lg p-2 hover:bg-[#E8E4DF] transition-colors cursor-pointer">
                 {/* Icon */}
                 <div
                   className={`mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full ${color}`}
@@ -98,18 +98,18 @@ export function RecentActivity() {
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-white leading-tight">
+                  <p className="text-sm font-medium text-[#1A1209] leading-tight">
                     {item.title}
                   </p>
-                  <p className="text-xs text-zinc-500 mt-0.5 truncate">
+                  <p className="text-xs text-[#7A6559] mt-0.5 truncate">
                     {item.description}
                   </p>
                   <div className="flex items-center gap-2 mt-1">
                     {item.user && (
-                      <span className="text-xs text-zinc-600">{item.user}</span>
+                      <span className="text-xs text-[#A89585]">{item.user}</span>
                     )}
-                    <span className="text-zinc-700">·</span>
-                    <span className="text-xs text-zinc-600">
+                    <span className="text-[#C4B4A5]">·</span>
+                    <span className="text-xs text-[#A89585]">
                       {formatRelativeTime(item.timestamp)}
                     </span>
                   </div>
@@ -120,7 +120,7 @@ export function RecentActivity() {
         })}
       </div>
 
-      <button className="mt-3 w-full rounded-md py-2 text-xs text-zinc-500 hover:text-zinc-300 transition-colors hover:bg-[#161616]">
+      <button className="mt-3 w-full rounded-md py-2 text-xs text-[#7A6559] hover:text-[#1A1209] transition-colors hover:bg-[#E8E4DF]">
         Ver toda a atividade
       </button>
     </div>

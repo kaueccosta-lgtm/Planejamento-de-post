@@ -42,39 +42,39 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#E8E4DF] flex items-center justify-center p-4">
       <div className="w-full max-w-sm space-y-8">
         {/* Logo */}
         <div className="text-center">
-          <div className="mx-auto w-16 h-16 rounded-2xl bg-[#d4a574] flex items-center justify-center mb-4">
-            <span className="text-[#0a0a0a] font-bold text-2xl font-serif">O</span>
+          <div className="mx-auto w-16 h-16 rounded-2xl bg-[#C46B3F] flex items-center justify-center mb-4">
+            <span className="text-white font-bold text-2xl font-serif">O</span>
           </div>
-          <h1 className="text-3xl font-serif font-bold text-white">
-            Oikos Social
+          <h1 className="text-3xl font-serif font-bold text-[#C46B3F]">
+            OIKOS
           </h1>
-          <p className="text-zinc-500 mt-2 text-sm">
-            Plataforma de Gestão de Redes Sociais
+          <p className="text-[#7A6559] mt-2 text-sm">
+            Gestão de Redes Sociais
           </p>
         </div>
 
         {/* Form */}
-        <div className="bg-[#111111] border border-[#1f1f1f] rounded-xl p-6 space-y-5">
+        <div className="bg-[#F0EDE8] border border-[#D5C9BC] rounded-2xl p-6 space-y-5 shadow-md">
           <div>
-            <h2 className="text-lg font-semibold text-white">Entrar</h2>
-            <p className="text-sm text-zinc-500 mt-1">
+            <h2 className="text-lg font-semibold text-[#1A1209]">Entrar</h2>
+            <p className="text-sm text-[#7A6559] mt-1">
               Acesse sua conta para continuar
             </p>
           </div>
 
           {error && (
-            <div className="rounded-lg bg-red-950/50 border border-red-900/50 px-4 py-3">
-              <p className="text-sm text-red-400">{error}</p>
+            <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3">
+              <p className="text-sm text-red-600">{error}</p>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-zinc-300">
+              <Label htmlFor="email" className="text-[#5A4035]">
                 Email
               </Label>
               <Input
@@ -89,7 +89,7 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-zinc-300">
+              <Label htmlFor="password" className="text-[#5A4035]">
                 Senha
               </Label>
               <div className="relative">
@@ -106,7 +106,7 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#A89585] hover:text-[#7A6559] transition-colors"
                 >
                   {showPassword ? (
                     <EyeOff className="h-4 w-4" />
@@ -120,7 +120,7 @@ export default function LoginPage() {
             <div className="flex items-center justify-end">
               <button
                 type="button"
-                className="text-xs text-[#d4a574] hover:text-[#e8c9a0] transition-colors"
+                className="text-xs text-[#C46B3F] hover:text-[#A85A30] transition-colors"
               >
                 Esqueceu a senha?
               </button>
@@ -143,7 +143,7 @@ export default function LoginPage() {
           </form>
         </div>
 
-        <p className="text-center text-xs text-zinc-600">
+        <p className="text-center text-xs text-[#A89585]">
           © {new Date().getFullYear()} Oikos Social. Todos os direitos reservados.
         </p>
       </div>

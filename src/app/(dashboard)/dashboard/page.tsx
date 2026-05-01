@@ -39,8 +39,8 @@ export default function DashboardPage() {
     <div className="space-y-6">
       {/* Page header */}
       <div>
-        <h1 className="text-2xl font-serif font-bold text-white">Dashboard</h1>
-        <p className="text-zinc-500 text-sm mt-1">
+        <h1 className="text-2xl font-serif font-bold text-[#1A1209]">Dashboard</h1>
+        <p className="text-[#7A6559] text-sm mt-1">
           Bom dia! Aqui está o resumo de hoje, 30 de abril de 2026.
         </p>
       </div>
@@ -78,15 +78,15 @@ export default function DashboardPage() {
       </div>
 
       {/* Performance banner */}
-      <div className="rounded-xl border border-[#d4a574]/20 bg-[#d4a574]/5 p-5">
+      <div className="rounded-xl border border-[#C46B3F]/20 bg-[#C46B3F]/5 p-5">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h3 className="font-serif font-semibold text-white">Performance do Mês</h3>
-            <p className="text-xs text-zinc-500 mt-0.5">Abril 2026</p>
+            <h3 className="font-serif font-semibold text-[#1A1209]">Performance do Mês</h3>
+            <p className="text-xs text-[#7A6559] mt-0.5">Abril 2026</p>
           </div>
           <Link
             href="/analise/dashboards"
-            className="text-xs text-[#d4a574] hover:text-[#e8c9a0] transition-colors"
+            className="text-xs text-[#C46B3F] hover:text-[#A85A30] transition-colors"
           >
             Ver relatório completo →
           </Link>
@@ -101,10 +101,10 @@ export default function DashboardPage() {
             { label: "Stories", value: "84" },
           ].map((metric) => (
             <div key={metric.label} className="text-center">
-              <p className="text-xl font-bold font-serif text-[#d4a574]">
+              <p className="text-xl font-bold font-serif text-[#C46B3F]">
                 {metric.value}
               </p>
-              <p className="text-xs text-zinc-500 mt-0.5">{metric.label}</p>
+              <p className="text-xs text-[#7A6559] mt-0.5">{metric.label}</p>
             </div>
           ))}
         </div>
@@ -113,15 +113,15 @@ export default function DashboardPage() {
       {/* Bottom grid */}
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Today's posts */}
-        <div className="rounded-xl border border-[#1f1f1f] bg-[#111111] p-5">
+        <div className="rounded-xl border border-[#D5C9BC] bg-[#F0EDE8] p-5 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <h3 className="font-serif font-semibold text-white">Posts de Hoje</h3>
-              <p className="text-xs text-zinc-500 mt-0.5">Agendados para publicar</p>
+              <h3 className="font-serif font-semibold text-[#1A1209]">Posts de Hoje</h3>
+              <p className="text-xs text-[#7A6559] mt-0.5">Agendados para publicar</p>
             </div>
             <Link
               href="/publicacao/agendados"
-              className="text-xs text-[#d4a574] hover:text-[#e8c9a0]"
+              className="text-xs text-[#C46B3F] hover:text-[#A85A30]"
             >
               Ver todos
             </Link>
@@ -130,16 +130,16 @@ export default function DashboardPage() {
             {upcomingPosts.map((post) => (
               <div
                 key={post.id}
-                className="flex items-center gap-3 rounded-lg bg-[#0a0a0a] p-3 hover:bg-[#161616] transition-colors cursor-pointer"
+                className="flex items-center gap-3 rounded-lg bg-[#E8E4DF] p-3 hover:bg-[#D5C9BC]/40 transition-colors cursor-pointer"
               >
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#1f1f1f]">
-                  <Calendar className="h-4 w-4 text-[#d4a574]" />
+                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#D5C9BC]">
+                  <Calendar className="h-4 w-4 text-[#C46B3F]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-white truncate">
+                  <p className="text-sm font-medium text-[#1A1209] truncate">
                     {post.title}
                   </p>
-                  <p className="text-xs text-zinc-500">
+                  <p className="text-xs text-[#7A6559]">
                     {post.platform} · {post.time}
                   </p>
                 </div>
@@ -149,19 +149,19 @@ export default function DashboardPage() {
         </div>
 
         {/* Pending approvals */}
-        <div className="rounded-xl border border-[#1f1f1f] bg-[#111111] p-5">
+        <div className="rounded-xl border border-[#D5C9BC] bg-[#F0EDE8] p-5 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <h3 className="font-serif font-semibold text-white">
+              <h3 className="font-serif font-semibold text-[#1A1209]">
                 Aprovações Pendentes
               </h3>
-              <p className="text-xs text-zinc-500 mt-0.5">
+              <p className="text-xs text-[#7A6559] mt-0.5">
                 Aguardando feedback dos clientes
               </p>
             </div>
             <Link
               href="/producao/workflow"
-              className="text-xs text-[#d4a574] hover:text-[#e8c9a0]"
+              className="text-xs text-[#C46B3F] hover:text-[#A85A30]"
             >
               Ver workflow
             </Link>
@@ -170,15 +170,15 @@ export default function DashboardPage() {
             {pendingApprovals.map((item) => (
               <div
                 key={item.id}
-                className="flex items-start gap-3 rounded-lg bg-[#0a0a0a] p-3 hover:bg-[#161616] transition-colors cursor-pointer"
+                className="flex items-start gap-3 rounded-lg bg-[#E8E4DF] p-3 hover:bg-[#D5C9BC]/40 transition-colors cursor-pointer"
               >
-                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-yellow-900/30">
-                  <CheckSquare className="h-4 w-4 text-yellow-400" />
+                <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-yellow-100">
+                  <CheckSquare className="h-4 w-4 text-yellow-600" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-white">{item.title}</p>
-                  <p className="text-xs text-zinc-500">{item.client}</p>
-                  <span className="mt-1 inline-block rounded-full bg-yellow-900/30 px-2 py-0.5 text-xs text-yellow-400">
+                  <p className="text-sm font-medium text-[#1A1209]">{item.title}</p>
+                  <p className="text-xs text-[#7A6559]">{item.client}</p>
+                  <span className="mt-1 inline-block rounded-full bg-yellow-100 px-2 py-0.5 text-xs text-yellow-700">
                     Vence em {item.dueIn}
                   </span>
                 </div>
@@ -188,11 +188,11 @@ export default function DashboardPage() {
         </div>
 
         {/* Alerts */}
-        <div className="rounded-xl border border-[#1f1f1f] bg-[#111111] p-5">
+        <div className="rounded-xl border border-[#D5C9BC] bg-[#F0EDE8] p-5 shadow-sm">
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <h3 className="font-serif font-semibold text-white">Alertas</h3>
-              <p className="text-xs text-zinc-500 mt-0.5">
+              <h3 className="font-serif font-semibold text-[#1A1209]">Alertas</h3>
+              <p className="text-xs text-[#7A6559] mt-0.5">
                 Atenção requerida
               </p>
             </div>
@@ -206,22 +206,22 @@ export default function DashboardPage() {
                 key={alert.id}
                 className={`flex items-start gap-3 rounded-lg p-3 cursor-pointer transition-colors ${
                   alert.type === "error"
-                    ? "bg-red-950/30 hover:bg-red-950/50"
+                    ? "bg-red-50 hover:bg-red-100"
                     : alert.type === "warning"
-                    ? "bg-yellow-950/30 hover:bg-yellow-950/50"
-                    : "bg-blue-950/30 hover:bg-blue-950/50"
+                    ? "bg-yellow-50 hover:bg-yellow-100"
+                    : "bg-blue-50 hover:bg-blue-100"
                 }`}
               >
                 <AlertTriangle
                   className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
                     alert.type === "error"
-                      ? "text-red-400"
+                      ? "text-red-500"
                       : alert.type === "warning"
-                      ? "text-yellow-400"
-                      : "text-blue-400"
+                      ? "text-yellow-600"
+                      : "text-blue-500"
                   }`}
                 />
-                <p className="text-sm text-zinc-300">{alert.message}</p>
+                <p className="text-sm text-[#5A4035]">{alert.message}</p>
               </div>
             ))}
           </div>

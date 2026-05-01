@@ -13,10 +13,10 @@ export default function CalendarioPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-serif font-bold text-white">
+          <h1 className="text-2xl font-serif font-bold text-[#1A1209]">
             Calendário Editorial
           </h1>
-          <p className="text-zinc-500 text-sm mt-1">
+          <p className="text-[#7A6559] text-sm mt-1">
             Planeje e visualize todos os posts por data
           </p>
         </div>

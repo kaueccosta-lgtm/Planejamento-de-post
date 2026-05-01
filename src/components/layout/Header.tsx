@@ -19,18 +19,18 @@ interface HeaderProps {
 
 export function Header({ title }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-[#1f1f1f] bg-[#0a0a0a]/95 backdrop-blur px-6">
+    <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-[#D5C9BC] bg-[#F0EDE8]/95 backdrop-blur px-6">
       {/* Left */}
       <div className="flex items-center gap-4">
         {title && (
-          <h2 className="text-base font-semibold text-white font-serif">{title}</h2>
+          <h2 className="text-base font-semibold text-[#1A1209] font-serif">{title}</h2>
         )}
         <div className="relative hidden md:flex items-center">
-          <Search className="absolute left-3 h-4 w-4 text-zinc-500" />
+          <Search className="absolute left-3 h-4 w-4 text-[#A89585]" />
           <input
             type="text"
             placeholder="Buscar posts, ideias, demandas..."
-            className="h-9 w-72 rounded-md border border-[#1f1f1f] bg-[#111111] pl-9 pr-4 text-sm text-white placeholder:text-zinc-500 focus:outline-none focus:ring-1 focus:ring-[#d4a574]"
+            className="h-9 w-72 rounded-md border border-[#D5C9BC] bg-[#F0EDE8] pl-9 pr-4 text-sm text-[#1A1209] placeholder:text-[#A89585] focus:outline-none focus:ring-1 focus:ring-[#C46B3F]"
           />
         </div>
       </div>
@@ -47,8 +47,8 @@ export function Header({ title }: HeaderProps) {
 
         {/* Notifications */}
         <Button variant="ghost" size="icon" className="relative">
-          <Bell className="h-4 w-4 text-zinc-400" />
-          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-[#d4a574]" />
+          <Bell className="h-4 w-4 text-[#7A6559]" />
+          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-[#C46B3F]" />
           <span className="sr-only">Notificações</span>
         </Button>
 
@@ -58,34 +58,34 @@ export function Header({ title }: HeaderProps) {
             <Button variant="ghost" className="relative h-8 w-8 rounded-full p-0">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="/avatars/user.png" alt="Usuário" />
-                <AvatarFallback className="text-xs">US</AvatarFallback>
+                <AvatarFallback className="text-xs bg-[#D5C9BC] text-[#1A1209]">US</AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56" align="end" forceMount>
+          <DropdownMenuContent className="w-56 bg-[#F0EDE8] border-[#D5C9BC]" align="end" forceMount>
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
-                <p className="text-sm font-medium leading-none text-white">
+                <p className="text-sm font-medium leading-none text-[#1A1209]">
                   Administrador
                 </p>
-                <p className="text-xs leading-none text-zinc-400">
+                <p className="text-xs leading-none text-[#7A6559]">
                   admin@oikossocial.com.br
                 </p>
               </div>
             </DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer">
+            <DropdownMenuSeparator className="bg-[#D5C9BC]" />
+            <DropdownMenuItem className="cursor-pointer text-[#1A1209] focus:bg-[#E8E4DF]">
               <User className="mr-2 h-4 w-4" />
               Meu Perfil
             </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer" asChild>
+            <DropdownMenuItem className="cursor-pointer text-[#1A1209] focus:bg-[#E8E4DF]" asChild>
               <Link href="/configuracoes/perfis">
                 <Settings className="mr-2 h-4 w-4" />
                 Configurações
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer text-red-400 focus:text-red-400">
+            <DropdownMenuSeparator className="bg-[#D5C9BC]" />
+            <DropdownMenuItem className="cursor-pointer text-red-600 focus:text-red-600 focus:bg-[#E8E4DF]">
               <LogOut className="mr-2 h-4 w-4" />
               Sair
             </DropdownMenuItem>

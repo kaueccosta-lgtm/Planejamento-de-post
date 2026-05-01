@@ -85,10 +85,10 @@ const ideas: Idea[] = [
 ];
 
 const statusConfig = {
-  NEW: { label: "Nova", color: "bg-zinc-700 text-zinc-300" },
-  IN_PROGRESS: { label: "Em andamento", color: "bg-blue-900 text-blue-300" },
-  APPROVED: { label: "Aprovada", color: "bg-green-900 text-green-300" },
-  REJECTED: { label: "Rejeitada", color: "bg-red-900 text-red-300" },
+  NEW: { label: "Nova", color: "bg-[#D5C9BC] text-[#5A4035]" },
+  IN_PROGRESS: { label: "Em andamento", color: "bg-blue-100 text-blue-700" },
+  APPROVED: { label: "Aprovada", color: "bg-green-100 text-green-700" },
+  REJECTED: { label: "Rejeitada", color: "bg-red-100 text-red-600" },
 };
 
 export default function BancoDeIdeisPage() {
@@ -108,10 +108,10 @@ export default function BancoDeIdeisPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-serif font-bold text-white">
+          <h1 className="text-2xl font-serif font-bold text-[#1A1209]">
             Banco de Ideias
           </h1>
-          <p className="text-zinc-500 text-sm mt-1">
+          <p className="text-[#7A6559] text-sm mt-1">
             {ideas.length} ideias registradas
           </p>
         </div>
@@ -124,7 +124,7 @@ export default function BancoDeIdeisPage() {
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#A89585]" />
           <Input
             placeholder="Buscar ideias..."
             className="pl-9"
@@ -140,8 +140,8 @@ export default function BancoDeIdeisPage() {
               className={cn(
                 "px-3 py-1.5 rounded-lg text-sm transition-colors",
                 filterStatus === s
-                  ? "bg-[#d4a574] text-[#0a0a0a] font-medium"
-                  : "bg-[#111111] border border-[#1f1f1f] text-zinc-400 hover:text-white"
+                  ? "bg-[#C46B3F] text-white font-medium"
+                  : "bg-[#F0EDE8] border border-[#D5C9BC] text-[#7A6559] hover:text-[#1A1209]"
               )}
             >
               {s === "all" ? "Todas" : statusConfig[s as keyof typeof statusConfig]?.label}
@@ -155,21 +155,21 @@ export default function BancoDeIdeisPage() {
         {filtered.map((idea) => (
           <div
             key={idea.id}
-            className="rounded-xl border border-[#1f1f1f] bg-[#111111] p-5 hover:border-[#2a2a2a] transition-colors cursor-pointer group"
+            className="rounded-xl border border-[#D5C9BC] bg-[#F0EDE8] p-5 hover:border-[#C4B4A5] shadow-sm transition-colors cursor-pointer group"
           >
             <div className="flex items-start gap-4">
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#d4a574]/10">
-                <Lightbulb className="h-5 w-5 text-[#d4a574]" />
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-[#C46B3F]/10">
+                <Lightbulb className="h-5 w-5 text-[#C46B3F]" />
               </div>
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <h3 className="font-semibold text-white group-hover:text-[#d4a574] transition-colors">
+                    <h3 className="font-semibold text-[#1A1209] group-hover:text-[#C46B3F] transition-colors">
                       {idea.title}
                     </h3>
                     {idea.obra && (
-                      <p className="text-xs text-[#d4a574] mt-0.5">{idea.obra}</p>
+                      <p className="text-xs text-[#C46B3F] mt-0.5">{idea.obra}</p>
                     )}
                   </div>
                   <div className="flex items-center gap-2 flex-shrink-0">
@@ -183,16 +183,16 @@ export default function BancoDeIdeisPage() {
                   </div>
                 </div>
 
-                <p className="text-sm text-zinc-400 mt-2 line-clamp-2">
+                <p className="text-sm text-[#7A6559] mt-2 line-clamp-2">
                   {idea.description}
                 </p>
 
                 <div className="flex items-center gap-3 mt-3">
-                  <div className="flex items-center gap-1 text-xs text-zinc-500">
+                  <div className="flex items-center gap-1 text-xs text-[#7A6559]">
                     <Tag className="h-3 w-3" />
                     <span>{idea.category}</span>
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-zinc-600">
+                  <div className="flex items-center gap-1 text-xs text-[#A89585]">
                     <Clock className="h-3 w-3" />
                     {idea.createdAt}
                   </div>
@@ -210,9 +210,9 @@ export default function BancoDeIdeisPage() {
         ))}
 
         {filtered.length === 0 && (
-          <div className="rounded-xl border border-[#1f1f1f] bg-[#111111] p-12 text-center">
-            <Lightbulb className="mx-auto h-10 w-10 text-zinc-700 mb-3" />
-            <p className="text-zinc-500">Nenhuma ideia encontrada</p>
+          <div className="rounded-xl border border-dashed border-[#D5C9BC] bg-[#F0EDE8] p-12 text-center">
+            <Lightbulb className="mx-auto h-10 w-10 text-[#A89585] mb-3" />
+            <p className="text-[#7A6559]">Nenhuma ideia encontrada</p>
           </div>
         )}
       </div>
