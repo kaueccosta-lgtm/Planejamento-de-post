@@ -12,10 +12,10 @@ export default function WorkflowPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-serif font-bold text-white">
+          <h1 className="text-2xl font-serif font-bold text-[#1A1209]">
             Workflow de Produção
           </h1>
-          <p className="text-zinc-500 text-sm mt-1">
+          <p className="text-[#7A6559] text-sm mt-1">
             Acompanhe o status de todas as demandas
           </p>
         </div>

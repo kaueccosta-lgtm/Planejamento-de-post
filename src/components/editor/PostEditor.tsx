@@ -47,17 +47,17 @@ export function PostEditor({ onSave, onPublish }: PostEditorProps) {
   };
 
   return (
-    <div className="flex h-[calc(100vh-120px)] gap-0 rounded-xl border border-[#1f1f1f] overflow-hidden">
+    <div className="flex h-[calc(100vh-120px)] gap-0 rounded-xl border border-[#D5C9BC] overflow-hidden shadow-sm">
       {/* Column 1: Settings */}
-      <div className="w-72 flex-shrink-0 border-r border-[#1f1f1f] bg-[#0d0d0d]">
-        <div className="border-b border-[#1f1f1f] px-4 py-3">
-          <h3 className="text-sm font-semibold text-white font-serif">Configurações</h3>
+      <div className="w-72 flex-shrink-0 border-r border-[#D5C9BC] bg-[#F0EDE8]">
+        <div className="border-b border-[#D5C9BC] px-4 py-3">
+          <h3 className="text-sm font-semibold text-[#1A1209] font-serif">Configurações</h3>
         </div>
         <ScrollArea className="h-[calc(100%-52px)]">
           <div className="p-4 space-y-5">
             {/* Title */}
             <div className="space-y-2">
-              <Label htmlFor="title" className="text-zinc-400">Título interno</Label>
+              <Label htmlFor="title" className="text-[#7A6559]">Título interno</Label>
               <Input
                 id="title"
                 placeholder="Ex: Bosque Verde — Lançamento"
@@ -68,7 +68,7 @@ export function PostEditor({ onSave, onPublish }: PostEditorProps) {
 
             {/* Obra */}
             <div className="space-y-2">
-              <Label className="text-zinc-400">Empreendimento</Label>
+              <Label className="text-[#7A6559]">Empreendimento</Label>
               <Select value={obraId} onValueChange={setObraId}>
                 <SelectTrigger>
                   <SelectValue placeholder="Selecionar obra..." />
@@ -83,7 +83,7 @@ export function PostEditor({ onSave, onPublish }: PostEditorProps) {
 
             {/* Schedule */}
             <div className="space-y-2">
-              <Label htmlFor="schedule" className="text-zinc-400">Data e horário</Label>
+              <Label htmlFor="schedule" className="text-[#7A6559]">Data e horário</Label>
               <Input
                 id="schedule"
                 type="datetime-local"
@@ -100,14 +100,14 @@ export function PostEditor({ onSave, onPublish }: PostEditorProps) {
 
             {/* First comment */}
             <div className="space-y-2">
-              <Label htmlFor="first-comment" className="text-zinc-400">Primeiro comentário</Label>
+              <Label htmlFor="first-comment" className="text-[#7A6559]">Primeiro comentário</Label>
               <Input
                 id="first-comment"
                 placeholder="Hashtags, links..."
                 value={firstComment}
                 onChange={(e) => setFirstComment(e.target.value)}
               />
-              <p className="text-xs text-zinc-600">
+              <p className="text-xs text-[#A89585]">
                 Postado automaticamente após publicar
               </p>
             </div>
@@ -116,9 +116,9 @@ export function PostEditor({ onSave, onPublish }: PostEditorProps) {
       </div>
 
       {/* Column 2: Content */}
-      <div className="flex-1 flex flex-col bg-[#111111]">
-        <div className="border-b border-[#1f1f1f] px-4 py-3 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-white font-serif">Conteúdo</h3>
+      <div className="flex-1 flex flex-col bg-[#E8E4DF]">
+        <div className="border-b border-[#D5C9BC] px-4 py-3 flex items-center justify-between bg-[#F0EDE8]">
+          <h3 className="text-sm font-semibold text-[#1A1209] font-serif">Conteúdo</h3>
           <div className="flex gap-2">
             <Button
               variant="outline"
@@ -144,17 +144,17 @@ export function PostEditor({ onSave, onPublish }: PostEditorProps) {
           <div className="space-y-5">
             {/* Media upload area */}
             <div>
-              <Label className="text-zinc-400 mb-2 block">Mídia</Label>
-              <div className="rounded-xl border-2 border-dashed border-[#1f1f1f] bg-[#0a0a0a] p-8 text-center hover:border-[#d4a574]/30 transition-colors cursor-pointer group">
-                <div className="mx-auto h-10 w-10 rounded-xl bg-[#1f1f1f] flex items-center justify-center mb-3 group-hover:bg-[#d4a574]/10 transition-colors">
-                  <svg className="h-5 w-5 text-zinc-500 group-hover:text-[#d4a574] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <Label className="text-[#7A6559] mb-2 block">Mídia</Label>
+              <div className="rounded-xl border-2 border-dashed border-[#D5C9BC] bg-[#F0EDE8] p-8 text-center hover:border-[#C46B3F]/40 transition-colors cursor-pointer group">
+                <div className="mx-auto h-10 w-10 rounded-xl bg-[#D5C9BC] flex items-center justify-center mb-3 group-hover:bg-[#C46B3F]/10 transition-colors">
+                  <svg className="h-5 w-5 text-[#7A6559] group-hover:text-[#C46B3F] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4v16m8-8H4" />
                   </svg>
                 </div>
-                <p className="text-sm text-zinc-500">
+                <p className="text-sm text-[#7A6559]">
                   Arraste mídias ou clique para enviar
                 </p>
-                <p className="text-xs text-zinc-700 mt-1">
+                <p className="text-xs text-[#A89585] mt-1">
                   JPG, PNG, MP4 até 100MB
                 </p>
               </div>
@@ -162,7 +162,7 @@ export function PostEditor({ onSave, onPublish }: PostEditorProps) {
 
             {/* Caption */}
             <div>
-              <Label className="text-zinc-400 mb-2 block">Legenda</Label>
+              <Label className="text-[#7A6559] mb-2 block">Legenda</Label>
               <CaptionInput
                 value={caption}
                 onChange={setCaption}
@@ -175,9 +175,9 @@ export function PostEditor({ onSave, onPublish }: PostEditorProps) {
       </div>
 
       {/* Column 3: Preview */}
-      <div className="w-80 flex-shrink-0 border-l border-[#1f1f1f] bg-[#0d0d0d]">
-        <div className="border-b border-[#1f1f1f] px-4 py-3 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-white font-serif">Prévia</h3>
+      <div className="w-80 flex-shrink-0 border-l border-[#D5C9BC] bg-[#F0EDE8]">
+        <div className="border-b border-[#D5C9BC] px-4 py-3 flex items-center justify-between">
+          <h3 className="text-sm font-semibold text-[#1A1209] font-serif">Prévia</h3>
           <div className="flex gap-1">
             {["INSTAGRAM", "FACEBOOK"].map((p) => (
               <button
@@ -185,8 +185,8 @@ export function PostEditor({ onSave, onPublish }: PostEditorProps) {
                 onClick={() => setActivePreviewPlatform(p)}
                 className={`text-xs px-2 py-1 rounded transition-colors ${
                   activePreviewPlatform === p
-                    ? "bg-[#d4a574]/20 text-[#d4a574]"
-                    : "text-zinc-500 hover:text-white"
+                    ? "bg-[#C46B3F]/20 text-[#C46B3F]"
+                    : "text-[#7A6559] hover:text-[#1A1209]"
                 }`}
               >
                 {p === "INSTAGRAM" ? "IG" : p === "FACEBOOK" ? "FB" : p}

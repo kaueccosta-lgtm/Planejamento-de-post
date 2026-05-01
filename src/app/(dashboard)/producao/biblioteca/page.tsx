@@ -16,10 +16,10 @@ export default function BibliotecaPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-serif font-bold text-white">
+          <h1 className="text-2xl font-serif font-bold text-[#1A1209]">
             Biblioteca de Mídia
           </h1>
-          <p className="text-zinc-500 text-sm mt-1">
+          <p className="text-[#7A6559] text-sm mt-1">
             Gerencie fotos, vídeos e outros arquivos
           </p>
         </div>
@@ -32,7 +32,7 @@ export default function BibliotecaPage() {
       {/* Filters */}
       <div className="flex gap-3">
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#A89585]" />
           <Input
             placeholder="Buscar por nome, tag..."
             className="pl-9"
@@ -51,9 +51,9 @@ export default function BibliotecaPage() {
 
       {/* Upload dialog */}
       <Dialog open={showUpload} onOpenChange={setShowUpload}>
-        <DialogContent className="max-w-lg">
+        <DialogContent className="max-w-lg bg-[#F0EDE8] border-[#D5C9BC]">
           <DialogHeader>
-            <DialogTitle>Enviar Mídia</DialogTitle>
+            <DialogTitle className="text-[#1A1209]">Enviar Mídia</DialogTitle>
           </DialogHeader>
           <MediaUpload
             onUploadComplete={() => setShowUpload(false)}

@@ -9,10 +9,10 @@ export default function EditorPage() {
   return (
     <div className="space-y-4">
       <div>
-        <h1 className="text-2xl font-serif font-bold text-white">
+        <h1 className="text-2xl font-serif font-bold text-[#1A1209]">
           Editor de Posts
         </h1>
-        <p className="text-zinc-500 text-sm mt-1">
+        <p className="text-[#7A6559] text-sm mt-1">
           Crie, edite e publique conteúdo em todas as plataformas
         </p>
       </div>

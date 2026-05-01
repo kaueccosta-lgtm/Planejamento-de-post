@@ -15,13 +15,13 @@ interface KanbanColumn {
 }
 
 const columns: KanbanColumn[] = [
-  { id: "BRIEFING", label: "Briefing", color: "text-purple-400", bgColor: "bg-purple-400/10" },
-  { id: "DESIGN", label: "Design", color: "text-pink-400", bgColor: "bg-pink-400/10" },
-  { id: "COPY", label: "Copy", color: "text-orange-400", bgColor: "bg-orange-400/10" },
-  { id: "REVIEW", label: "Revisão", color: "text-yellow-400", bgColor: "bg-yellow-400/10" },
-  { id: "APPROVAL", label: "Aprovação", color: "text-amber-400", bgColor: "bg-amber-400/10" },
-  { id: "SCHEDULED", label: "Agendado", color: "text-blue-400", bgColor: "bg-blue-400/10" },
-  { id: "PUBLISHED", label: "Publicado", color: "text-emerald-400", bgColor: "bg-emerald-400/10" },
+  { id: "BRIEFING", label: "Briefing", color: "text-purple-600", bgColor: "bg-purple-100" },
+  { id: "DESIGN", label: "Design", color: "text-pink-600", bgColor: "bg-pink-100" },
+  { id: "COPY", label: "Copy", color: "text-orange-600", bgColor: "bg-orange-100" },
+  { id: "REVIEW", label: "Revisão", color: "text-yellow-600", bgColor: "bg-yellow-100" },
+  { id: "APPROVAL", label: "Aprovação", color: "text-amber-700", bgColor: "bg-amber-100" },
+  { id: "SCHEDULED", label: "Agendado", color: "text-blue-600", bgColor: "bg-blue-100" },
+  { id: "PUBLISHED", label: "Publicado", color: "text-emerald-700", bgColor: "bg-emerald-100" },
 ];
 
 type ExtendedDemand = Demand & {
@@ -114,10 +114,10 @@ export function KanbanBoard() {
         return (
           <div
             key={col.id}
-            className="flex-shrink-0 w-64 flex flex-col rounded-xl border border-[#1f1f1f] bg-[#0d0d0d]"
+            className="flex-shrink-0 w-64 flex flex-col rounded-xl border border-[#D5C9BC] bg-[#F0EDE8] shadow-sm"
           >
             {/* Column header */}
-            <div className="flex items-center justify-between p-3 border-b border-[#1f1f1f]">
+            <div className="flex items-center justify-between p-3 border-b border-[#D5C9BC]">
               <div className="flex items-center gap-2">
                 <span
                   className={cn(
@@ -132,7 +132,7 @@ export function KanbanBoard() {
                   {col.label}
                 </h3>
               </div>
-              <button className="text-zinc-600 hover:text-zinc-400 transition-colors">
+              <button className="text-[#A89585] hover:text-[#7A6559] transition-colors">
                 <Plus className="h-4 w-4" />
               </button>
             </div>
@@ -141,8 +141,8 @@ export function KanbanBoard() {
             <ScrollArea className="flex-1 max-h-[calc(100vh-280px)]">
               <div className="p-2 space-y-2">
                 {colDemands.length === 0 ? (
-                  <div className="rounded-lg border border-dashed border-[#1f1f1f] p-4 text-center">
-                    <p className="text-xs text-zinc-700">Nenhuma demanda</p>
+                  <div className="rounded-lg border border-dashed border-[#D5C9BC] p-4 text-center">
+                    <p className="text-xs text-[#A89585]">Nenhuma demanda</p>
                   </div>
                 ) : (
                   colDemands.map((demand) => (
