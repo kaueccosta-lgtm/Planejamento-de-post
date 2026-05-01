@@ -1,0 +1,415 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          UserRole  @default(EDITOR)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts    Account[]
+  sessions    Session[]
+  posts       Post[]
+  demands     Demand[]     @relation("DemandCreator")
+  assignedDemands Demand[] @relation("DemandAssignee")
+  ideas       Idea[]
+  comments    Comment[]
+  messages    Message[]
+  auditLogs   AuditLog[]
+  reports     Report[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model SocialAccount {
+  id           String        @id @default(cuid())
+  platform     Platform
+  accountName  String
+  accountId    String
+  accessToken  String
+  refreshToken String?
+  tokenExpiry  DateTime?
+  isActive     Boolean       @default(true)
+  avatarUrl    String?
+  followers    Int           @default(0)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  posts         PostChannel[]
+  conversations Conversation[]
+  competitors   Competitor[]
+
+  @@unique([platform, accountId])
+  @@map("social_accounts")
+}
+
+model Obra {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  client      String?
+  color       String   @default("#d4a574")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  posts   Post[]
+  demands Demand[]
+  ideas   Idea[]
+
+  @@map("obras")
+}
+
+model Idea {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  category    String?
+  status      IdeaStatus @default(NEW)
+  priority    Priority   @default(MEDIUM)
+  tags        String[]
+  obraId      String?
+  createdById String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  obra      Obra? @relation(fields: [obraId], references: [id])
+  createdBy User  @relation(fields: [createdById], references: [id])
+
+  @@map("ideas")
+}
+
+model Demand {
+  id           String       @id @default(cuid())
+  title        String
+  description  String?
+  format       String?
+  status       DemandStatus @default(BRIEFING)
+  priority     Priority     @default(MEDIUM)
+  dueDate      DateTime?
+  obraId       String?
+  createdById  String
+  assignedToId String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  obra           Obra?           @relation(fields: [obraId], references: [id])
+  createdBy      User            @relation("DemandCreator", fields: [createdById], references: [id])
+  assignedTo     User?           @relation("DemandAssignee", fields: [assignedToId], references: [id])
+  posts          Post[]
+  approvalTokens ApprovalToken[]
+
+  @@map("demands")
+}
+
+model ApprovalToken {
+  id        String              @id @default(cuid())
+  token     String              @unique @default(cuid())
+  demandId  String
+  postId    String?
+  status    ApprovalTokenStatus @default(PENDING)
+  expiresAt DateTime
+  usedAt    DateTime?
+  feedback  String?
+  createdAt DateTime            @default(now())
+
+  demand Demand  @relation(fields: [demandId], references: [id])
+  post   Post?   @relation(fields: [postId], references: [id])
+
+  @@map("approval_tokens")
+}
+
+model Post {
+  id            String     @id @default(cuid())
+  title         String?
+  caption       String?
+  scheduledFor  DateTime?
+  publishedAt   DateTime?
+  status        PostStatus @default(DRAFT)
+  obraId        String?
+  demandId      String?
+  createdById   String
+  hashtags      String[]
+  mentions      String[]
+  firstComment  String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  obra           Obra?           @relation(fields: [obraId], references: [id])
+  demand         Demand?         @relation(fields: [demandId], references: [id])
+  createdBy      User            @relation(fields: [createdById], references: [id])
+  channels       PostChannel[]
+  media          Media[]
+  approvalTokens ApprovalToken[]
+
+  @@map("posts")
+}
+
+model PostChannel {
+  id              String        @id @default(cuid())
+  postId          String
+  socialAccountId String
+  status          PostStatus    @default(DRAFT)
+  publishedAt     DateTime?
+  platformPostId  String?
+  error           String?
+  customCaption   String?
+  scheduledFor    DateTime?
+
+  post          Post          @relation(fields: [postId], references: [id], onDelete: Cascade)
+  socialAccount SocialAccount @relation(fields: [socialAccountId], references: [id])
+
+  @@unique([postId, socialAccountId])
+  @@map("post_channels")
+}
+
+model Media {
+  id         String    @id @default(cuid())
+  filename   String
+  url        String
+  mimeType   String
+  size       Int
+  width      Int?
+  height     Int?
+  duration   Float?
+  postId     String?
+  altText    String?
+  tags       String[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  post Post? @relation(fields: [postId], references: [id])
+
+  @@map("media")
+}
+
+model Comment {
+  id              String        @id @default(cuid())
+  platformId      String
+  platform        Platform
+  authorName      String
+  authorAvatar    String?
+  content         String
+  sentiment       Sentiment?
+  isResolved      Boolean       @default(false)
+  replyContent    String?
+  repliedAt       DateTime?
+  repliedById     String?
+  postPlatformId  String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  repliedBy User? @relation(fields: [repliedById], references: [id])
+
+  @@map("comments")
+}
+
+model Conversation {
+  id              String        @id @default(cuid())
+  platform        Platform
+  socialAccountId String
+  participantName String
+  participantId   String
+  participantAvatar String?
+  lastMessageAt   DateTime?
+  isRead          Boolean       @default(false)
+  isResolved      Boolean       @default(false)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  socialAccount SocialAccount @relation(fields: [socialAccountId], references: [id])
+  messages      Message[]
+
+  @@map("conversations")
+}
+
+model Message {
+  id             String   @id @default(cuid())
+  conversationId String
+  senderId       String?
+  senderName     String
+  content        String
+  mediaUrl       String?
+  isFromUs       Boolean  @default(false)
+  platformMsgId  String?
+  createdAt      DateTime @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  sender       User?        @relation(fields: [senderId], references: [id])
+
+  @@map("messages")
+}
+
+model Report {
+  id          String       @id @default(cuid())
+  title       String
+  type        ReportType
+  period      String
+  startDate   DateTime
+  endDate     DateTime
+  data        Json
+  createdById String
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  createdBy User @relation(fields: [createdById], references: [id])
+
+  @@map("reports")
+}
+
+model Competitor {
+  id              String        @id @default(cuid())
+  name            String
+  platform        Platform
+  platformId      String
+  socialAccountId String?
+  followers       Int?
+  engagementRate  Float?
+  lastAnalyzedAt  DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  socialAccount SocialAccount? @relation(fields: [socialAccountId], references: [id])
+
+  @@map("competitors")
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  userId     String
+  action     String
+  entityType String
+  entityId   String
+  metadata   Json?
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@map("audit_logs")
+}
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  EDITOR
+  VIEWER
+  CLIENT
+}
+
+enum Platform {
+  INSTAGRAM
+  FACEBOOK
+  LINKEDIN
+  TIKTOK
+  YOUTUBE
+  TWITTER
+}
+
+enum PostStatus {
+  DRAFT
+  IN_REVIEW
+  APPROVED
+  SCHEDULED
+  PUBLISHED
+  FAILED
+  CANCELLED
+}
+
+enum DemandStatus {
+  DRAFT           // Rascunho
+  CONTENT         // Em produção (design/redação)
+  INTERNAL_REVIEW // Aprovação interna (gestor)
+  EXTERNAL_REVIEW // Aprovação sócios
+  REVISION        // Ajustes solicitados
+  PENDING_SCHEDULE // Aguardando agendamento
+  DONE            // Concluídas (agendado/publicado)
+  CANCELLED
+}
+
+enum IdeaStatus {
+  NEW
+  IN_PROGRESS
+  APPROVED
+  REJECTED
+  ARCHIVED
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum ApprovalTokenStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum Sentiment {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+}
+
+enum ReportType {
+  PERFORMANCE
+  ENGAGEMENT
+  REACH
+  COMPETITOR
+  CUSTOM
+}
